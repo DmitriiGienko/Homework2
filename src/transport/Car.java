@@ -46,7 +46,7 @@ public class Car {
             this.remoteStarting = (isRemoteStart == null || isRemoteStart.isEmpty() ?
                     " не установлен" : " установлен");
             this.withoutKey = (isWithout == null || isWithout.isEmpty() ?
-                    " не установлен" : " установлен");
+                    "не установлен" : " установлен");
         }
 
         public void isRemoteStarting() {
