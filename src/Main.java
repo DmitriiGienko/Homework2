@@ -22,7 +22,7 @@ public class Main {
 
         Car audi = new Car("Audi",
                 "A8",
-                3.5,
+                3.0,
                 "Белый",
                 2020,
                 null,
@@ -41,7 +41,7 @@ public class Main {
 
         Car bmw = new Car("BMW",
                 "Z8",
-                4,
+                3.0,
                 null,
                 2022,
                 "Германия",
@@ -53,10 +53,10 @@ public class Main {
                 new Car.Key("+", ""));
 
         Car kia = new Car("KIA",
-                "Spectra",
+                "Sportage",
                 0,
-                "Синий",
-                2008,
+                "Красный",
+                2018,
                 "Южная Корея",
                 "Механика",
                 null,
@@ -65,12 +65,12 @@ public class Main {
                 Car.selectTires(6),
                 new Car.Key("+", null));
 
-        Car honda = new Car("Honda",
+        Car honda = new Car("Hyundai",
                 null,
-                1.8,
+                1.6,
                 null,
-                2018,
-                "Япония",
+                2016,
+                "Южная Корея",
                 "Автомат",
                 "Седан",
                 "Т473YT",
