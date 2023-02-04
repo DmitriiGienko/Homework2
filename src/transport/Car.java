@@ -1,6 +1,6 @@
 package transport;
 
-import java.util.Objects;
+import java.util.Locale;
 
 public class Car {
 
@@ -14,45 +14,47 @@ public class Car {
     private final String bodyType;
     private String registrationNumber;
     private final int peopleCapacity;
-    private String changeTypeOfTires;
+    private boolean TypeOfTires;
+    private Key key;
 
-
-    public Car(String brand, String model, double engineVolume, String color, int year, String country,
-               String transmission, String bodyType, String registrationNumber, int peopleCapacity) {
+    public Car(String brand, String model, double engineVolume, String color, int year,
+               String country, String transmission, String bodyType, String registrationNumber,
+               int peopleCapacity, boolean changeTypeOfTires, Key key) {
         this.brand = veryfiString(brand);
         this.model = veryfiString(model);
         this.engineVolume = (engineVolume <= 0 ? 1.5 : engineVolume);
         this.color = (color == null || color.isEmpty() ? "Белый" : color);
+        ;
         this.year = (year <= 0 ? 2010 : year);
+        ;
         this.country = veryfiString(country);
         this.transmission = (transmission == null || transmission.isEmpty() ? "Механика" : transmission);
         this.bodyType = (bodyType == null || bodyType.isEmpty() ? "Седан" : bodyType);
+        ;
         this.registrationNumber = (registrationNumber == null || registrationNumber.isEmpty() ? "A000AA" : registrationNumber);
         this.peopleCapacity = (peopleCapacity <= 0 ? 5 : peopleCapacity);
-        this.changeTypeOfTires = selectTires(11);
-        System.out.println(toString());
-        Car.Key car = new Car.Key(null, "Yes");
-        car.isRemoteStarting();
-        car.isWithoutKey();
+        this.TypeOfTires = selectTires(2);
+        this.key = key;
+
     }
 
     public static class Key {
-        private final String isRemoteStarting;
-        private final String isWithoutKey;
+        private final String remoteStarting;
+        private final String withoutKey;
 
         public Key(String isRemoteStart, String isWithout) {
-            this.isRemoteStarting = (isRemoteStart == null || isRemoteStart.isEmpty() ?
+            this.remoteStarting = (isRemoteStart == null || isRemoteStart.isEmpty() ?
                     "не установлен" : " установлен");
-            this.isWithoutKey = (isWithout == null || isWithout.isEmpty() ?
+            this.withoutKey = (isWithout == null || isWithout.isEmpty() ?
                     "не установлен" : " установлен");
         }
 
         public void isRemoteStarting() {
-            System.out.println("Удаленный запуск двигателя " + isRemoteStarting);
+            System.out.println("Удаленный запуск двигателя " + remoteStarting);
         }
 
         public void isWithoutKey() {
-            System.out.println("Бесключевой доступ " + isWithoutKey + "\n");
+            System.out.println("Бесключевой доступ " + withoutKey + "\n");
         }
 
     }
@@ -115,21 +117,20 @@ public class Car {
         return peopleCapacity;
     }
 
-    public String getChangeTypeOfTires() {
-        return changeTypeOfTires;
+    public boolean getChangeTypeOfTires() {
+        return TypeOfTires;
     }
 
-    public void setChangeTypeOfTires(String changeTypeOfTires) {
-        this.changeTypeOfTires = changeTypeOfTires;
+    public void setChangeTypeOfTires(boolean changeTypeOfTires) {
+        this.TypeOfTires = changeTypeOfTires;
     }
-
-
 
 
     // установка шин
-    public String selectTires(int month) {
-        return (month >= 10 || month < 4 ? "Зимние шины" : "Летние шины");
+    public static boolean selectTires(int month) {
+        return (month >= 10 || month < 4 ? false : true);
     }
+
 
     //метод проверки ввода строк
     public String veryfiString(String str) {
@@ -152,7 +153,7 @@ public class Car {
                 " * тип кузова:  " + bodyType + "\n" +
                 " * регистрационный номер:  " + registrationNumber + "\n" +
                 " * количество мест:  " + peopleCapacity + "\n" +
-                " * установлены на колесах: " + changeTypeOfTires;
+                " * установлены на колесах: " + (TypeOfTires ? "летние шины" : "зимние шины");
     }
 }
 
