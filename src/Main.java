@@ -3,8 +3,6 @@ import transport.Car;
 public class Main {
     public static void main(String[] args) {
 
-
-
         Car lada = new Car("Lada",
                 "Granta",
                 1.7,
@@ -56,6 +54,8 @@ public class Main {
                 "Седан",
                 "Т473YT",
                 5);
+
+
 
 
 

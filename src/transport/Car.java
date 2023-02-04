@@ -2,20 +2,19 @@ package transport;
 
 import java.util.Objects;
 
-public final class Car {
+public class Car {
 
     private final String brand;
     private final String model;
-    private final double engineVolume;
-    private final String color;
+    private double engineVolume;
+    private String color;
     private final int year;
     private final String country;
     private String transmission;
-    private String bodyType;
+    private final String bodyType;
     private String registrationNumber;
-    private int peopleCapacity;
+    private final int peopleCapacity;
     private String changeTypeOfTires;
-
 
 
     public Car(String brand, String model, double engineVolume, String color, int year, String country,
@@ -43,7 +42,7 @@ public final class Car {
 
         public Key(String isRemoteStart, String isWithout) {
             this.isRemoteStarting = (isRemoteStart == null || isRemoteStart.isEmpty() ?
-                                    "не установлен" : " установлен");
+                    "не установлен" : " установлен");
             this.isWithoutKey = (isWithout == null || isWithout.isEmpty() ?
                     "не установлен" : " установлен");
         }
@@ -53,10 +52,11 @@ public final class Car {
         }
 
         public void isWithoutKey() {
-            System.out.println("Бесключевой доступ " + isWithoutKey);
+            System.out.println("Бесключевой доступ " + isWithoutKey + "\n");
         }
 
     }
+
 
     public String getBrand() {
         return brand;
@@ -72,6 +72,14 @@ public final class Car {
 
     public String getColor() {
         return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setEngineVolume(double engineVolume) {
+        this.engineVolume = engineVolume;
     }
 
     public int getYear() {
@@ -94,9 +102,6 @@ public final class Car {
         return bodyType;
     }
 
-    public void setBodyType(String bodyType) {
-        this.bodyType = bodyType;
-    }
 
     public String getRegistrationNumber() {
         return registrationNumber;
@@ -110,10 +115,6 @@ public final class Car {
         return peopleCapacity;
     }
 
-    public void setPeopleCapacity(int peopleCapacity) {
-        this.peopleCapacity = peopleCapacity;
-    }
-
     public String getChangeTypeOfTires() {
         return changeTypeOfTires;
     }
@@ -122,13 +123,7 @@ public final class Car {
         this.changeTypeOfTires = changeTypeOfTires;
     }
 
-    public void addAuto(String brand, String model, double engineVolume, String color, int year,
-                        String country, String transmission, String bodyType, String registrationNumber,
-                        int peopleCapacity) {
 
-        Car car = new Car(brand, model, engineVolume, color, year, country, transmission, bodyType, registrationNumber, peopleCapacity);
-
-    }
 
 
     // установка шин
@@ -157,7 +152,7 @@ public final class Car {
                 " * тип кузова:  " + bodyType + "\n" +
                 " * регистрационный номер:  " + registrationNumber + "\n" +
                 " * количество мест:  " + peopleCapacity + "\n" +
-                " * установлены на колесах: " + changeTypeOfTires + "\n" + "  -----------------------------";
+                " * установлены на колесах: " + changeTypeOfTires;
     }
 }
 
