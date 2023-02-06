@@ -4,12 +4,7 @@ import java.util.Locale;
 
 public class Car extends Transport {
 
-    //    private final String brand;
-//    private final String model;
     private double engineVolume;
-    //    private String color;
-//    private final int year;
-//    private final String country;
     private String transmission;
     private final String bodyType;
     private String registrationNumber;
@@ -18,7 +13,7 @@ public class Car extends Transport {
     private Key key;
 
     public Car(String brand, String model, double engineVolume, String color, String country, int year, int maxSpeed, String transmission, String bodyType, String registrationNumber,
-               int peopleCapacity, boolean changeTypeOfTires, Key key) {
+               int peopleCapacity, boolean TypeOfTires, Key key) {
         super(brand, model, color, year, country, maxSpeed);
         this.engineVolume = (engineVolume <= 0 ? 1.5 : engineVolume);
         this.transmission = (transmission == null || transmission.isEmpty() ? "Механика" : transmission);
@@ -52,21 +47,20 @@ public class Car extends Transport {
     }
 
 
-
     public double getEngineVolume() {
         return engineVolume;
     }
 
-    public void setEngineVolume(double engineVolume) {
-        this.engineVolume = engineVolume;
+    public void setVerifyEngineVolume(double engineVolume) {
+        this.engineVolume = (engineVolume <= 0 ? 1.5 : engineVolume);
     }
 
     public String getTransmission() {
         return transmission;
     }
 
-    public void setTransmission(String transmission) {
-        this.transmission = transmission;
+    public void setVerifyTransmission(String transmission) {
+        this.transmission = (transmission == null || transmission.isEmpty() ? "Механика" : transmission);
     }
 
     public String getBodyType() {
@@ -77,8 +71,8 @@ public class Car extends Transport {
         return registrationNumber;
     }
 
-    public void setRegistrationNumber(String registrationNumber) {
-        this.registrationNumber = registrationNumber;
+    public void setVerifyRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = (registrationNumber == null || registrationNumber.isEmpty() ? "A000AA" : registrationNumber);
     }
 
     public int getPeopleCapacity() {
@@ -89,10 +83,9 @@ public class Car extends Transport {
         return TypeOfTires;
     }
 
-    public void setChangeTypeOfTires(boolean changeTypeOfTires) {
-        this.TypeOfTires = changeTypeOfTires;
+    public void setChangeTypeOfTires(boolean TypeOfTires) {
+        this.TypeOfTires = selectTires(2);
     }
-
 
     // установка шин
     public static boolean selectTires(int month) {
@@ -111,17 +104,21 @@ public class Car extends Transport {
 
     @Override
     public String toString() {
-        return "Автомобиль:  " + brand + "\n" +
-                " * модель:  " + model + "\n" +
+        return "Автомобиль:  " + this.getBrand() + "\n" +
+                " * модель:  " + this.getModel() + "\n" +
                 " * объем двигателя:  " + engineVolume + "\n" +
-                " * цвет:  " + color + "\n" +
-                " * год выпуска:  " + year + "\n" +
-                " * страна-производитель:  " + country + "\n" +
+                " * цвет:  " + this.getColor() + "\n" +
+                " * год выпуска:  " + this.getYear() + "\n" +
+                " * Максимальная скорость:  " + this.getMaxSpeed() + "\n" +
+                " * страна-производитель:  " + this.getCountry() + "\n" +
                 " * коробка передач:  " + transmission + "\n" +
                 " * тип кузова:  " + bodyType + "\n" +
                 " * регистрационный номер:  " + registrationNumber + "\n" +
                 " * количество мест:  " + peopleCapacity + "\n" +
                 " * установлены на колесах: " + (TypeOfTires ? "летние шины" : "зимние шины");
+
+
     }
 }
+
 
