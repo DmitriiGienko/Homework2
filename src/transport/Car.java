@@ -2,14 +2,14 @@ package transport;
 
 import java.util.Locale;
 
-public class Car {
+public class Car extends Transport {
 
-    private final String brand;
-    private final String model;
+    //    private final String brand;
+//    private final String model;
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
+    //    private String color;
+//    private final int year;
+//    private final String country;
     private String transmission;
     private final String bodyType;
     private String registrationNumber;
@@ -17,20 +17,12 @@ public class Car {
     private boolean TypeOfTires;
     private Key key;
 
-    public Car(String brand, String model, double engineVolume, String color, int year,
-               String country, String transmission, String bodyType, String registrationNumber,
+    public Car(String brand, String model, double engineVolume, String color, String country, int year, int maxSpeed, String transmission, String bodyType, String registrationNumber,
                int peopleCapacity, boolean changeTypeOfTires, Key key) {
-        this.brand = veryfiString(brand);
-        this.model = veryfiString(model);
+        super(brand, model, color, year, country, maxSpeed);
         this.engineVolume = (engineVolume <= 0 ? 1.5 : engineVolume);
-        this.color = (color == null || color.isEmpty() ? "Белый" : color);
-        ;
-        this.year = (year <= 0 ? 2010 : year);
-        ;
-        this.country = veryfiString(country);
         this.transmission = (transmission == null || transmission.isEmpty() ? "Механика" : transmission);
         this.bodyType = (bodyType == null || bodyType.isEmpty() ? "Седан" : bodyType);
-        ;
         this.registrationNumber = (registrationNumber == null || registrationNumber.isEmpty() ? "A000AA" : registrationNumber);
         this.peopleCapacity = (peopleCapacity <= 0 ? 5 : peopleCapacity);
         this.TypeOfTires = selectTires(2);
@@ -60,36 +52,13 @@ public class Car {
     }
 
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
 
     public double getEngineVolume() {
         return engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = engineVolume;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
     }
 
     public String getTransmission() {
@@ -103,7 +72,6 @@ public class Car {
     public String getBodyType() {
         return bodyType;
     }
-
 
     public String getRegistrationNumber() {
         return registrationNumber;
