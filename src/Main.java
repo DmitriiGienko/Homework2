@@ -1,19 +1,27 @@
+import transport.Bus;
 import transport.Car;
 
 public class Main {
     public static void main(String[] args) {
+        task1();
+        task2();
+    }
+
+    public static void task1() {
+        System.out.println("_____ Задача 1 _____");
 
         Car lada = new Car("Lada",
                 "Granta",
                 1.7,
                 "Желтый",
-                2015,
                 "Россия",
+                2015,
+                185,
                 "Робот",
                 "Хэчбек",
                 "R555YT",
                 4,
-                false,
+                true,
                 new Car.Key(null, null));
         Car.Key ladaKey = new Car.Key(null, null);
         System.out.println(lada);
@@ -24,8 +32,9 @@ public class Main {
                 "A8",
                 3.0,
                 "Белый",
-                2020,
                 null,
+                2020,
+                240,
                 "Атомат",
                 "Универсал",
                 "D125DD",
@@ -43,8 +52,9 @@ public class Main {
                 "Z8",
                 3.0,
                 null,
-                2022,
                 "Германия",
+                2022,
+                260,
                 null,
                 "Купе",
                 "С777СХ",
@@ -56,8 +66,9 @@ public class Main {
                 "Sportage",
                 0,
                 "Красный",
-                2018,
                 "Южная Корея",
+                2018,
+                180,
                 "Механика",
                 null,
                 "А023НН",
@@ -69,14 +80,29 @@ public class Main {
                 null,
                 1.6,
                 null,
-                2016,
                 "Южная Корея",
+                2000,
+                0,
                 "Автомат",
                 "Седан",
                 "Т473YT",
                 5,
                 Car.selectTires(9),
                 new Car.Key("", "+"));
+
+
+    }
+
+    public static void task2() {
+        System.out.println("_____ Задача 2 _____");
+
+        Bus volgabus = new Bus("Volgabus","Сити-ритм","Синий",2021,"Россия",0);
+        Bus mercedes = new Bus("Mercedes","D-830",null,0,"Германия",135);
+        Bus honda = new Bus("Honda",null,"Красный",2022,"Япония",140);
+
+        System.out.println(volgabus);
+        System.out.println(mercedes);
+        System.out.println(honda);
 
 
     }
