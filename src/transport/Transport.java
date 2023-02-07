@@ -2,19 +2,19 @@ package transport;
 
 public class Transport {
 
-    private String brand;
-    private String model;
+    private final String brand;
+    private final String model;
     private String color;
     private final int year;
     private final String country;
     private int maxSpeed;
 
     public Transport(String brand, String model, String color, int year, String country, int maxSpeed) {
-        this.brand = veryfiString(brand);
-        this.model = veryfiString(model);
+        this.brand = verifyInputs(brand);
+        this.model = verifyInputs(model);
         this.color = (color == null || color.isEmpty() ? "Белый" : color);
         this.year = (year <= 0 ? 2010 : year);
-        this.country = veryfiString(country);
+        this.country = verifyInputs(country);
         this.maxSpeed = (maxSpeed <= 0 ? 100 : maxSpeed);
     }
 
@@ -22,16 +22,8 @@ public class Transport {
         return brand;
     }
 
-    public void setVerifyBrand(String brand) {
-        this.brand = veryfiString(brand);
-    }
-
     public String getModel() {
         return model;
-    }
-
-    public void setVerifyModel(String model) {
-        this.model = veryfiString(model);
     }
 
     public String getColor() {
@@ -58,10 +50,20 @@ public class Transport {
         this.maxSpeed = (maxSpeed <= 0 ? 100 : maxSpeed);
     }
 
-    public String veryfiString(String str) {
+    public String verifyInputs(String str) {
         if (str == null || str.isEmpty()) {
             str = "default";
         } else str = str;
         return str;
+    }
+
+    @Override
+    public String toString() {
+        return "Автобус:  " + brand + "\n" +
+                " * модель:  " + model + "\n" +
+                " * цвет:  " + color + "\n" +
+                " * год выпуска:  " + year + "\n" +
+                " * Максимальная скорость:  " + maxSpeed + "\n" +
+                " * страна-производитель:  " + country + "\n";
     }
 }

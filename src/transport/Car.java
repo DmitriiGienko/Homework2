@@ -94,7 +94,7 @@ public class Car extends Transport {
 
 
     //метод проверки ввода строк
-    public String veryfiString(String str) {
+    public String verifyInputs(String str) {
         if (str == null || str.isEmpty()) {
             str = "default";
         } else str = str;
@@ -104,13 +104,8 @@ public class Car extends Transport {
 
     @Override
     public String toString() {
-        return "Автомобиль:  " + this.getBrand() + "\n" +
-                " * модель:  " + this.getModel() + "\n" +
+        return super.toString() +
                 " * объем двигателя:  " + engineVolume + "\n" +
-                " * цвет:  " + this.getColor() + "\n" +
-                " * год выпуска:  " + this.getYear() + "\n" +
-                " * Максимальная скорость:  " + this.getMaxSpeed() + "\n" +
-                " * страна-производитель:  " + this.getCountry() + "\n" +
                 " * коробка передач:  " + transmission + "\n" +
                 " * тип кузова:  " + bodyType + "\n" +
                 " * регистрационный номер:  " + registrationNumber + "\n" +
