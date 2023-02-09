@@ -1,21 +1,31 @@
 package transport;
 
-public abstract class Transport {
+
+import driver.Driver;
+
+public abstract class Transport<T> {
 
     private final String brand;
     private final String model;
-    private double engineVolume;
+    private final double engineVolume;
+    private Driver driver;
+
+    public Transport(String brand, String model, double engineVolume, Driver driver) {
+        this.brand = brand;
+        this.model = model;
+        this.engineVolume = engineVolume;
+        this.driver = driver;
+    }
 
     public Transport(String brand, String model, double engineVolume) {
-        this.brand = verifyInputs(brand);
-        this.model = verifyInputs(model);
-        this.engineVolume = (engineVolume == 0 ? 3.0 : engineVolume);
+        this.brand = brand;
+        this.model = model;
+        this.engineVolume = engineVolume;
     }
 
     public abstract void startMovement();
 
     public abstract void stopMovement();
-
 
     public String getBrand() {
         return brand;
@@ -25,16 +35,16 @@ public abstract class Transport {
         return model;
     }
 
-    public double getEngineCapacity() {
+    public double getEngineVolume() {
         return engineVolume;
     }
 
+    public Driver getDriver() {
+        return driver;
+    }
 
-    public String verifyInputs(String str) {
-        if (str == null || str.isEmpty()) {
-            str = "default";
-        } else str = str;
-        return str;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
     @Override
