@@ -8,16 +8,16 @@ import transport.Truck;
 
 public class Main {
     public static void main(String[] args) {
-//        task1to3();
+        task1to3();
         task4();
     }
 
     public static void task1to3() {
         System.out.println("_____ Задача 1 - 3_____");
 
-       Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4);
+        Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4);
         Car ferrari = new Car("FERRARI", "Testarossa", 4.9);
-        Car chevi = new Car("CHEVROLET", "Comaro" , 5.0);
+        Car chevi = new Car("CHEVROLET", "Comaro", 5.0);
         Car lada = new Car("LADA", "2101", 1.3);
         System.out.println(chevi);
         System.out.println(lambo);
