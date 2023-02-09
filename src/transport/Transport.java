@@ -8,9 +8,9 @@ public abstract class Transport<T> {
     private final String brand;
     private final String model;
     private final double engineVolume;
-    private Driver driver;
+    private T driver;
 
-    public Transport(String brand, String model, double engineVolume, Driver driver) {
+    public Transport(String brand, String model, double engineVolume, T driver) {
         this.brand = brand;
         this.model = model;
         this.engineVolume = engineVolume;
@@ -39,11 +39,11 @@ public abstract class Transport<T> {
         return engineVolume;
     }
 
-    public Driver getDriver() {
+    public T getDriver() {
         return driver;
     }
 
-    public void setDriver(Driver driver) {
+    public void setDriver(T driver) {
         this.driver = driver;
     }
 

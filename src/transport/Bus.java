@@ -4,13 +4,13 @@ import driver.Driver;
 import driver.DriverD;
 import java.util.Random;
 
-public class Bus <D extends DriverD>extends Transport implements competing{
+public class Bus extends Transport<DriverD> implements competing{
 
     public Bus(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
     }
 
-    public Bus(String brand, String model, double engineVolume, Driver driver) {
+    public Bus(String brand, String model, double engineVolume, DriverD driver) {
         super(brand, model, engineVolume, driver);
     }
 
@@ -31,7 +31,7 @@ public class Bus <D extends DriverD>extends Transport implements competing{
     }
 
     @Override
-    public Driver getDriver() {
+    public DriverD getDriver() {
         return super.getDriver();
     }
 

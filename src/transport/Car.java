@@ -4,13 +4,13 @@ import driver.Driver;
 import driver.DriverB;
 import java.util.Random;
 
-public class Car<D extends DriverB> extends Transport implements competing {
+public class Car extends Transport <DriverB> implements competing {
 
     public Car(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
     }
 
-    public Car(String brand, String model, double engineVolume, Driver driver) {
+    public Car(String brand, String model, double engineVolume, DriverB driver) {
         super(brand, model, engineVolume, driver);
     }
 
@@ -30,12 +30,12 @@ public class Car<D extends DriverB> extends Transport implements competing {
     }
 
     @Override
-    public Driver getDriver() {
+    public DriverB getDriver() {
         return super.getDriver();
     }
 
     @Override
-    public void setDriver(Driver driver) {
+    public void setDriver(DriverB driver) {
         super.setDriver(driver);
     }
 
