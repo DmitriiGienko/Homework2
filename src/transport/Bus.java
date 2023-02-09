@@ -4,11 +4,18 @@ public class Bus extends Transport {
 
     public Bus(String brand,
                String model,
-               String color, int year,
-               String country,
-               int maxSpeed) {
-        super(brand, model, color, year, country, maxSpeed);
+               double engineVolume) {
+        super(brand, model, engineVolume);
     }
+    public void startMovement() {
+        System.out.println("Начало движения автобуса " + this.getBrand());
+    }
+
+    @Override
+    public void stopMovement() {
+        System.out.println("Окончание движения автобуса " + this.getBrand());
+    }
+
 
 
 }

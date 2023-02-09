@@ -1,109 +1,37 @@
 import transport.Bus;
 import transport.Car;
+import transport.Truck;
 
 public class Main {
     public static void main(String[] args) {
         task1();
-        task2();
+//        task2();
     }
 
     public static void task1() {
         System.out.println("_____ Задача 1 _____");
 
-        Car lada = new Car("Lada",
-                "Granta",
-                1.7,
-                "Желтый",
-                "Россия",
-                2015,
-                185,
-                "Робот",
-                "Хэчбек",
-                "R555YT",
-                4,
-                true,
-                new Car.Key(null, null));
-        Car.Key ladaKey = new Car.Key(null, null);
+        Car chevi = new Car("CHEVROLET", "Comaro iroc-z", 5.0);
+        Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4);
+        Car ferrari = new Car("FERRARI", "Testarossa", 4.9);
+        Car lada = new Car("LADA", "2101", 1.3);
+        System.out.println(chevi);
+        System.out.println(lambo);
+        System.out.println(ferrari);
         System.out.println(lada);
-        ladaKey.isRemoteStarting();
-        ladaKey.isWithoutKey();
+        chevi.startMovement();
 
-        Car audi = new Car("Audi",
-                "A8",
-                3.0,
-                "Белый",
-                null,
-                2020,
-                240,
-                "Атомат",
-                "Универсал",
-                "D125DD",
-                5,
-                Car.selectTires(2),
-                new Car.Key("", null));
-        Car.Key audiKey = new Car.Key(null, "+");
-        System.out.println(audi);
-        audiKey.isRemoteStarting();
-        audiKey.isWithoutKey();
-        audi.setChangeTypeOfTires(true);
-        System.out.println(audi);
+        Truck man = new Truck("MAN", "TGX", 10.2);
+        Truck mercedes = new Truck("MERCEDES", "Arox", 10.7);
+        Truck reno = new Truck("Renault", "Major", 9.8);
+        Truck kamaz = new Truck("KAMAZ", "5320", 10.8);
+        System.out.println(man);
+        man.stopMovement();
 
-        Car bmw = new Car("BMW",
-                "Z8",
-                3.0,
-                null,
-                "Германия",
-                2022,
-                260,
-                null,
-                "Купе",
-                "С777СХ",
-                2,
-                Car.selectTires(6),
-                new Car.Key("+", ""));
-
-        Car kia = new Car("KIA",
-                "Sportage",
-                0,
-                "Красный",
-                "Южная Корея",
-                2018,
-                180,
-                "Механика",
-                null,
-                "А023НН",
-                0,
-                Car.selectTires(6),
-                new Car.Key("+", null));
-
-        Car honda = new Car("Hyundai",
-                null,
-                1.6,
-                null,
-                "Южная Корея",
-                2000,
-                0,
-                "Автомат",
-                "Седан",
-                "Т473YT",
-                5,
-                Car.selectTires(9),
-                new Car.Key("", "+"));
-
-
-    }
-
-    public static void task2() {
-        System.out.println("_____ Задача 2 _____");
-
-        Bus volgabus = new Bus("Volgabus","Сити-ритм","Синий",2021,"Россия",0);
-        Bus mercedes = new Bus("Mercedes","D-830",null,0,"Германия",135);
-        Bus honda = new Bus("Honda",null,"Красный",2022,"Япония",140);
-
-        System.out.println(volgabus);
-        System.out.println(mercedes);
-        System.out.println(honda);
-
+        Bus baw = new Bus("BAW", "Ankai", 6.5);
+        Bus neo = new Bus("NEOPLAN", "Turboline", 12.4);
+        Bus isuzu = new Bus("ISUZU", "Citibus", 5.6);
+        Bus paz = new Bus("PAZ", "32054", 4.6);
 
     }
 
