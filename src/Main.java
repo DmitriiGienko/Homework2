@@ -1,108 +1,123 @@
+import driver.DriverB;
+import driver.DriverC;
+import driver.DriverD;
 import transport.Bus;
 import transport.Car;
+import transport.Truck;
+
 
 public class Main {
     public static void main(String[] args) {
-        task1();
-        task2();
+        task1to3();
+        task4();
     }
 
-    public static void task1() {
-        System.out.println("_____ Задача 1 _____");
+    public static void task1to3() {
+        System.out.println("_____ Задача 1 - 3_____");
 
-        Car lada = new Car("Lada",
-                "Granta",
-                1.7,
-                "Желтый",
-                "Россия",
-                2015,
-                185,
-                "Робот",
-                "Хэчбек",
-                "R555YT",
-                4,
-                true,
-                new Car.Key(null, null));
-        Car.Key ladaKey = new Car.Key(null, null);
+        Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4);
+        Car ferrari = new Car("FERRARI", "Testarossa", 4.9);
+        Car chevi = new Car("CHEVROLET", "Comaro", 5.0);
+        Car lada = new Car("LADA", "2101", 1.3);
+        System.out.println(chevi);
+        System.out.println(lambo);
+        System.out.println(ferrari);
         System.out.println(lada);
-        ladaKey.isRemoteStarting();
-        ladaKey.isWithoutKey();
+        chevi.startMovement();
+        lada.bestLapTime();
+        lada.maxSpeed();
 
-        Car audi = new Car("Audi",
-                "A8",
-                3.0,
-                "Белый",
-                null,
-                2020,
-                240,
-                "Атомат",
-                "Универсал",
-                "D125DD",
-                5,
-                Car.selectTires(2),
-                new Car.Key("", null));
-        Car.Key audiKey = new Car.Key(null, "+");
-        System.out.println(audi);
-        audiKey.isRemoteStarting();
-        audiKey.isWithoutKey();
-        audi.setChangeTypeOfTires(true);
-        System.out.println(audi);
+        Truck man = new Truck("MAN", "TGX", 10.2);
+        Truck mercedes = new Truck("MERCEDES", "Arox", 10.7);
+        Truck reno = new Truck("Renault", "Major", 9.8);
+        Truck kamaz = new Truck("KAMAZ", "5320", 10.8);
+        System.out.println(man);
+        man.stopMovement();
 
-        Car bmw = new Car("BMW",
-                "Z8",
-                3.0,
-                null,
-                "Германия",
-                2022,
-                260,
-                null,
-                "Купе",
-                "С777СХ",
-                2,
-                Car.selectTires(6),
-                new Car.Key("+", ""));
+        Bus baw = new Bus("BAW", "Ankai", 6.5);
+        Bus neo = new Bus("NEOPLAN", "Turboline", 12.4);
+        Bus isuzu = new Bus("ISUZU", "Citibus", 5.6);
+        Bus paz = new Bus("PAZ", "32054", 4.6);
 
-        Car kia = new Car("KIA",
-                "Sportage",
-                0,
-                "Красный",
-                "Южная Корея",
-                2018,
-                180,
-                "Механика",
-                null,
-                "А023НН",
-                0,
-                Car.selectTires(6),
-                new Car.Key("+", null));
+        paz.pitStop();
+        paz.maxSpeed();
+        paz.bestLapTime();
 
-        Car honda = new Car("Hyundai",
-                null,
-                1.6,
-                null,
-                "Южная Корея",
-                2000,
-                0,
-                "Автомат",
-                "Седан",
-                "Т473YT",
-                5,
-                Car.selectTires(9),
-                new Car.Key("", "+"));
+        DriverB[] driverB = new DriverB[4];
+        driverB[0] = new DriverB("Иванов И.В.", 7, "B");
+        driverB[1] = new DriverB("Петров В.Е.", 21, "B");
+        driverB[2] = new DriverB("Сидоров И.Р.", 14, "B");
+        driverB[3] = new DriverB("Ильин П.Т.", 2, "B");
+
+        for (int i = 0; i < driverB.length; i++) {
+            System.out.println(driverB[i].toString());
+            driverB[i].startMoving();
+            driverB[i].stopMoving();
+            driverB[i].refuelCar();
+        }
+
+        DriverC[] driverC = new DriverC[4];
+        driverC[0] = new DriverC("Валенков H.K.", 6, "С");
+        driverC[1] = new DriverC("Летунов У.К.", 30, "С");
+        driverC[2] = new DriverC("Бобров М.Р.", 15, "С");
+        driverC[3] = new DriverC("Пчелкин З.Л.", 8, "С");
+
+        DriverD[] driverD = new DriverD[4];
+        driverD[0] = new DriverD("Валенков H.K.", 6, "D");
+        driverD[1] = new DriverD("Летунов У.К.", 30, "D");
+        driverD[2] = new DriverD("Бобров М.Р.", 15, "D");
+        driverD[3] = new DriverD("Пчелкин З.Л.", 8, "D");
 
 
     }
 
-    public static void task2() {
-        System.out.println("_____ Задача 2 _____");
+    public static void task4() {
+        System.out.println("_____ Задача 4 _____");
 
-        Bus volgabus = new Bus("Volgabus","Сити-ритм","Синий",2021,"Россия",0);
-        Bus mercedes = new Bus("Mercedes","D-830",null,0,"Германия",135);
-        Bus honda = new Bus("Honda",null,"Красный",2022,"Япония",140);
+        DriverB[] driverB = new DriverB[4];
+        driverB[0] = new DriverB("Иванов И.В.", 7, "B");
+        driverB[1] = new DriverB("Петров В.Е.", 21, "B");
+        driverB[2] = new DriverB("Сидоров И.Р.", 14, "B");
+        driverB[3] = new DriverB("Ильин П.Т.", 2, "B");
 
-        System.out.println(volgabus);
-        System.out.println(mercedes);
-        System.out.println(honda);
+        Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4, driverB[0]);
+        Car ferrari = new Car("FERRARI", "Testarossa", 4.9, driverB[1]);
+        Car chevi = new Car("CHEVROLET", "Comaro", 5.0, driverB[2]);
+        Car lada = new Car("LADA", "2101", 1.3, driverB[3]);
+        lambo.showInfo();
+        ferrari.showInfo();
+        chevi.showInfo();
+        lada.showInfo();
+
+        DriverC[] driverC = new DriverC[4];
+        driverC[0] = new DriverC("Валенков H.K.", 6, "С");
+        driverC[1] = new DriverC("Летунов У.К.", 30, "С");
+        driverC[2] = new DriverC("Бобров М.Р.", 15, "С");
+        driverC[3] = new DriverC("Пчелкин З.Л.", 8, "С");
+
+        Truck man = new Truck("MAN", "TGX", 10.2, driverC[0]);
+        Truck mercedes = new Truck("MERCEDES", "Arox", 10.7, driverC[0]);
+        Truck reno = new Truck("Renault", "Major", 9.8, driverC[0]);
+        Truck kamaz = new Truck("KAMAZ", "5320", 10.8, driverC[0]);
+        man.showInfo();
+        mercedes.showInfo();
+        reno.showInfo();
+        kamaz.showInfo();
+
+        DriverD[] driverD = new DriverD[4];
+        driverD[0] = new DriverD("Валенков H.K.", 6, "D");
+        driverD[1] = new DriverD("Летунов У.К.", 30, "D");
+        driverD[2] = new DriverD("Бобров М.Р.", 15, "D");
+        driverD[3] = new DriverD("Пчелкин З.Л.", 8, "D");
+
+        Bus baw = new Bus("BAW", "Ankai", 6.5, driverD[0]);
+        Bus neo = new Bus("NEOPLAN", "Turboline", 12.4, driverD[1]);
+        Bus isuzu = new Bus("ISUZU", "Citibus", 5.6, driverD[2]);
+        Bus paz = new Bus("PAZ", "32054", 4.6, driverD[3]);
+        baw.showInfo();
+        neo.showInfo();
+        isuzu.showInfo();
+        paz.showInfo();
 
 
     }

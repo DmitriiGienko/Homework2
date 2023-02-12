@@ -1,16 +1,16 @@
 package transport;
 
 import driver.Driver;
-import driver.DriverB;
+import driver.DriverC;
 import java.util.Random;
 
-public class Car extends Transport <DriverB> implements competing {
+public class Truck extends Transport<DriverC> implements competing {
 
-    public Car(String brand, String model, double engineVolume) {
+    public Truck(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
     }
 
-    public Car(String brand, String model, double engineVolume, DriverB driver) {
+    public Truck(String brand, String model, double engineVolume, DriverC driver) {
         super(brand, model, engineVolume, driver);
     }
 
@@ -30,41 +30,37 @@ public class Car extends Transport <DriverB> implements competing {
     }
 
     @Override
-    public DriverB getDriver() {
+    public DriverC getDriver() {
         return super.getDriver();
     }
 
-    @Override
-    public void setDriver(DriverB driver) {
+    public void setDriver(DriverC driver) {
         super.setDriver(driver);
     }
 
     @Override
     public void startMovement() {
-        System.out.println("Начало движения автомобиля " + this.getBrand());
+        System.out.println("Начало движения грузовика " + this.getBrand());
     }
 
     @Override
     public void stopMovement() {
-        System.out.println("Окончание движения автомобиля " + this.getBrand());
-
+        System.out.println("Окончание движения грузовика " + this.getBrand());
     }
 
     @Override
     public String toString() {
-        return "Автомобиль " + super.toString();
+        return "Грузовик " + super.toString();
     }
 
     @Override
     public void pitStop() {
         System.out.println(this.getBrand() + " заехал на ПитСтоп");
-
     }
 
     @Override
     public void bestLapTime() {
         System.out.printf("Лучшее время круга %s %.1f мин\n", this.getBrand(), (S / speed()) * 60);
-
     }
 
     @Override
@@ -74,13 +70,10 @@ public class Car extends Transport <DriverB> implements competing {
 
     public double speed() {
         Random ran = new Random();
-        return ran.nextDouble(100) + 200;
+        return ran.nextDouble(100) + 120;
     }
 
     public void showInfo() {
-        System.out.printf("Водитель %s управляет автомобилем %s и будет участвовать в заезде\n", getDriver().getFullName(), getBrand());
+        System.out.printf("Водитель %s управляет грузовиком %s и будет участвовать в заезде\n", getDriver().getFullName(), getBrand());
     }
-
 }
-
-

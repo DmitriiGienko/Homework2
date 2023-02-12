@@ -1,22 +1,31 @@
 package transport;
 
-public class Transport {
+
+import driver.Driver;
+
+public abstract class Transport<T> {
 
     private final String brand;
     private final String model;
-    private String color;
-    private final int year;
-    private final String country;
-    private int maxSpeed;
+    private final double engineVolume;
+    private T driver;
 
-    public Transport(String brand, String model, String color, int year, String country, int maxSpeed) {
-        this.brand = verifyInputs(brand);
-        this.model = verifyInputs(model);
-        this.color = (color == null || color.isEmpty() ? "Белый" : color);
-        this.year = (year <= 0 ? 2010 : year);
-        this.country = verifyInputs(country);
-        this.maxSpeed = (maxSpeed <= 0 ? 100 : maxSpeed);
+    public Transport(String brand, String model, double engineVolume, T driver) {
+        this.brand = brand;
+        this.model = model;
+        this.engineVolume = engineVolume;
+        this.driver = driver;
     }
+
+    public Transport(String brand, String model, double engineVolume) {
+        this.brand = brand;
+        this.model = model;
+        this.engineVolume = engineVolume;
+    }
+
+    public abstract void startMovement();
+
+    public abstract void stopMovement();
 
     public String getBrand() {
         return brand;
@@ -26,44 +35,23 @@ public class Transport {
         return model;
     }
 
-    public String getColor() {
-        return color;
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-    public void setVerifyColor(String color) {
-        this.color = (color == null || color.isEmpty() ? "Белый" : color);
+    public T getDriver() {
+        return driver;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public int getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setVerifyMaxSpeed(int maxSpeed) {
-        this.maxSpeed = (maxSpeed <= 0 ? 100 : maxSpeed);
-    }
-
-    public String verifyInputs(String str) {
-        if (str == null || str.isEmpty()) {
-            str = "default";
-        } else str = str;
-        return str;
+    public void setDriver(T driver) {
+        this.driver = driver;
     }
 
     @Override
     public String toString() {
-        return "Автобус:  " + brand + "\n" +
+        return brand + "\n" +
                 " * модель:  " + model + "\n" +
-                " * цвет:  " + color + "\n" +
-                " * год выпуска:  " + year + "\n" +
-                " * Максимальная скорость:  " + maxSpeed + "\n" +
-                " * страна-производитель:  " + country + "\n";
+                " * объем двигателя:  " + engineVolume + "\n";
+
     }
 }
