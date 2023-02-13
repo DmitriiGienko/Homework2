@@ -1,18 +1,52 @@
 package transport;
 
-import driver.Driver;
 import driver.DriverB;
+
 import java.util.Random;
 
-public class Car extends Transport <DriverB> implements competing {
+public class Car extends Transport<DriverB> implements competing {
 
-    public Car(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
-    }
+    private TypeOfBody typeOfBody;
 
-    public Car(String brand, String model, double engineVolume, DriverB driver) {
+
+    public Car(String brand, String model, double engineVolume, DriverB driver, TypeOfBody typeOfBody) {
         super(brand, model, engineVolume, driver);
+        this.typeOfBody = typeOfBody;
     }
+// добавляю перечисления по типу кузова
+
+    public enum TypeOfBody {
+        SEDAN("Седан"),
+        HATCHBACK("Хетчбэк"),
+        COUPE("Купе"),
+        WAGON("Универсал"),
+        SUV("Внедорожник"),
+        CROSSOVER("Кроссовер"),
+        PICKUP("Пикап"),
+        VAN("Фургон"),
+        MINIVAN("Минивэн");
+
+        private String typeOFBody;
+
+        TypeOfBody(String typeOFBody) {
+            this.typeOFBody = typeOFBody;
+        }
+
+        public String getTypeOFBody() {
+            return typeOFBody;
+        }
+
+
+        @Override
+        public String toString() {
+            return " * тип кузова: " + typeOFBody;
+        }
+    }
+
+    public TypeOfBody getTypeOfBody() {
+        return typeOfBody;
+    }
+
 
     @Override
     public String getBrand() {
@@ -52,7 +86,7 @@ public class Car extends Transport <DriverB> implements competing {
 
     @Override
     public String toString() {
-        return "Автомобиль " + super.toString();
+        return "Автомобиль " + super.toString() + typeOfBody.toString();
     }
 
     @Override

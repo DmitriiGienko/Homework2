@@ -1,14 +1,13 @@
 package transport;
 
 
-import driver.Driver;
-
 public abstract class Transport<T> {
 
     private final String brand;
     private final String model;
     private final double engineVolume;
     private T driver;
+
 
     public Transport(String brand, String model, double engineVolume, T driver) {
         this.brand = brand;

@@ -1,18 +1,47 @@
 package transport;
 
-import driver.Driver;
 import driver.DriverC;
 import java.util.Random;
 
 public class Truck extends Transport<DriverC> implements competing {
 
-    public Truck(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
+    private LoadСapacity loadСapacity;
+
+
+    public Truck(String brand, String model, double engineVolume, DriverC driver, LoadСapacity loadСapacity) {
+        super(brand, model, engineVolume, driver);
+        this.loadСapacity = loadСapacity;
     }
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver) {
-        super(brand, model, engineVolume, driver);
+    public enum LoadСapacity {
+        N1(0f, 3.5f),
+        N2(3.6f, 12f),
+        N3(12.1f, 30f);
+
+        private final float MinLoadCapacity;
+        private final float MaxLoadCapacity;
+
+        LoadСapacity(float minLoadCapacity, float maxLoadCapacity) {
+            MinLoadCapacity = minLoadCapacity;
+            MaxLoadCapacity = maxLoadCapacity;
+        }
+
+        public float getMinLoadCapacity() {
+            return MinLoadCapacity;
+        }
+
+        public float getMaxLoadCapacity() {
+            return MaxLoadCapacity;
+        }
+
+        @Override
+        public String toString() {
+            return " * грузоподъемность от " +
+                     MinLoadCapacity +
+                    " до " + MaxLoadCapacity + " т.";
+        }
     }
+
 
     @Override
     public String getBrand() {
@@ -50,7 +79,7 @@ public class Truck extends Transport<DriverC> implements competing {
 
     @Override
     public String toString() {
-        return "Грузовик " + super.toString();
+        return "Грузовик " + super.toString() + loadСapacity.toString();
     }
 
     @Override
