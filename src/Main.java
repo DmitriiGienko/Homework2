@@ -19,8 +19,11 @@ public class Main {
         Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4, driverB[0], Car.TypeOfBody.COUPE);
         Car ferrari = new Car("FERRARI", "Testarossa", 4.9, driverB[1], Car.TypeOfBody.HATCHBACK);
         Car chevi = new Car("CHEVROLET", "Comaro", 5.0, driverB[2], Car.TypeOfBody.HATCHBACK);
-        Car lada = new Car("LADA", "2104", 1.3, driverB[3], Car.TypeOfBody.WAGON);
-        System.out.println(lada);
+        Car lada = new Car("LADA", "2104", 1.3, driverB[3], Car.TypeOfBody.HATCHBACK);
+        lada.getType();
+
+        lada.printType();
+        System.out.println();
         lambo.showInfo();
         ferrari.showInfo();
         chevi.showInfo();
@@ -37,6 +40,7 @@ public class Main {
         Truck reno = new Truck("Renault", "Major", 9.8, driverC[0], Truck.LoadСapacity.N2);
         Truck kamaz = new Truck("KAMAZ", "5320", 10.8, driverC[0], Truck.LoadСapacity.N3);
         System.out.println(gazel);
+        man.getType();
         man.showInfo();
         gazel.showInfo();
         reno.showInfo();
@@ -57,6 +61,7 @@ public class Main {
         neo.showInfo();
         isuzu.showInfo();
         paz.showInfo();
+        isuzu.getType();
 
 
     }

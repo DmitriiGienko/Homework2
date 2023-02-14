@@ -99,7 +99,20 @@ public class Bus extends Transport<DriverD> implements competing {
     }
 
     public void showInfo() {
-        System.out.printf("Водитель %s управляет автобусом %s и будет участвовать в заезде\n", getDriver().getFullName(), getBrand());
+        System.out.printf("Водитель %s управляет автобусом %s и будет участвовать в заезде\n",
+                getDriver().getFullName(), getBrand());
     }
 
+    @Override
+    public void getType() {
+        System.out.printf("Автобус %s вместимостью от %d до %d\n", getBrand(), capacity.minCapacity, capacity.maxCapacity);
+    }
+
+    @Override
+    public void printType() {
+        System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " +
+                ((capacity.minCapacity <= 0 && capacity.maxCapacity <= 0) ?
+                        "Данных по транспортному средству недостаточно" :
+                        capacity.getMinCapacity() + " до " + capacity.getMaxCapacity()));
+    }
 }
