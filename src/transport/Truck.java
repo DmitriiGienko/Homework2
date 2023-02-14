@@ -1,6 +1,7 @@
 package transport;
 
 import driver.DriverC;
+
 import java.util.Random;
 
 public class Truck extends Transport<DriverC> implements competing {
@@ -18,27 +19,27 @@ public class Truck extends Transport<DriverC> implements competing {
         N2(3.6f, 12f),
         N3(12.1f, 30f);
 
-        private final float MinLoadCapacity;
-        private final float MaxLoadCapacity;
+        private final float minLoadCapacity;
+        private final float maxLoadCapacity;
 
         LoadСapacity(float minLoadCapacity, float maxLoadCapacity) {
-            MinLoadCapacity = minLoadCapacity;
-            MaxLoadCapacity = maxLoadCapacity;
+            this.minLoadCapacity = minLoadCapacity;
+            this.maxLoadCapacity = maxLoadCapacity;
         }
 
         public float getMinLoadCapacity() {
-            return MinLoadCapacity;
+            return minLoadCapacity;
         }
 
         public float getMaxLoadCapacity() {
-            return MaxLoadCapacity;
+            return maxLoadCapacity;
         }
 
         @Override
         public String toString() {
             return " * грузоподъемность от " +
-                     MinLoadCapacity +
-                    " до " + MaxLoadCapacity + " т.";
+                    minLoadCapacity +
+                    " до " + maxLoadCapacity + " т.";
         }
     }
 
@@ -104,5 +105,21 @@ public class Truck extends Transport<DriverC> implements competing {
 
     public void showInfo() {
         System.out.printf("Водитель %s управляет грузовиком %s и будет участвовать в заезде\n", getDriver().getFullName(), getBrand());
+    }
+
+
+    @Override
+    public void getType() {
+
+        System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " + loadСapacity.getMinLoadCapacity() +
+                " до " + loadСapacity.getMaxLoadCapacity());
+    }
+
+    @Override
+    public void printType() {
+        System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " +
+                ((loadСapacity.minLoadCapacity <= 0 && loadСapacity.maxLoadCapacity <= 0) ?
+                        "Данных по транспортному средству недостаточно" :
+                        loadСapacity.getMinLoadCapacity() + " до " + loadСapacity.getMaxLoadCapacity()));
     }
 }

@@ -46,6 +46,11 @@ public abstract class Transport<T> {
         this.driver = driver;
     }
 
+    public abstract void getType();
+
+    public abstract void printType();
+
+
     @Override
     public String toString() {
         return brand + "\n" +
