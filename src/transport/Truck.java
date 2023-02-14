@@ -1,18 +1,48 @@
 package transport;
 
-import driver.Driver;
 import driver.DriverC;
+
 import java.util.Random;
 
 public class Truck extends Transport<DriverC> implements competing {
 
-    public Truck(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
+    private LoadСapacity loadСapacity;
+
+
+    public Truck(String brand, String model, double engineVolume, DriverC driver, LoadСapacity loadСapacity) {
+        super(brand, model, engineVolume, driver);
+        this.loadСapacity = loadСapacity;
     }
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver) {
-        super(brand, model, engineVolume, driver);
+    public enum LoadСapacity {
+        N1(0f, 3.5f),
+        N2(3.6f, 12f),
+        N3(12.1f, 30f);
+
+        private final float minLoadCapacity;
+        private final float maxLoadCapacity;
+
+        LoadСapacity(float minLoadCapacity, float maxLoadCapacity) {
+            this.minLoadCapacity = minLoadCapacity;
+            this.maxLoadCapacity = maxLoadCapacity;
+        }
+
+        public float getMinLoadCapacity() {
+            return minLoadCapacity;
+        }
+
+        public float getMaxLoadCapacity() {
+            return maxLoadCapacity;
+        }
+
+        @Override
+        public String toString() {
+            return " * грузоподъемность от " +
+                    minLoadCapacity +
+                    " до " + maxLoadCapacity + " т.";
+        }
     }
+
 
     @Override
     public String getBrand() {
@@ -50,7 +80,7 @@ public class Truck extends Transport<DriverC> implements competing {
 
     @Override
     public String toString() {
-        return "Грузовик " + super.toString();
+        return "Грузовик " + super.toString() + loadСapacity.toString();
     }
 
     @Override
@@ -75,5 +105,21 @@ public class Truck extends Transport<DriverC> implements competing {
 
     public void showInfo() {
         System.out.printf("Водитель %s управляет грузовиком %s и будет участвовать в заезде\n", getDriver().getFullName(), getBrand());
+    }
+
+
+    @Override
+    public void getType() {
+
+        System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " + loadСapacity.getMinLoadCapacity() +
+                " до " + loadСapacity.getMaxLoadCapacity());
+    }
+
+    @Override
+    public void printType() {
+        System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " +
+                ((loadСapacity.minLoadCapacity <= 0 && loadСapacity.maxLoadCapacity <= 0) ?
+                        "Данных по транспортному средству недостаточно" :
+                        loadСapacity.getMinLoadCapacity() + " до " + loadСapacity.getMaxLoadCapacity()));
     }
 }

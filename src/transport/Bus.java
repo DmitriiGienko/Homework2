@@ -1,17 +1,46 @@
 package transport;
 
-import driver.Driver;
 import driver.DriverD;
+
 import java.util.Random;
 
-public class Bus extends Transport<DriverD> implements competing{
+public class Bus extends Transport<DriverD> implements competing {
 
-    public Bus(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
+    private Capacity capacity;
+
+
+    public Bus(String brand, String model, double engineVolume, DriverD driver, Capacity capacity) {
+        super(brand, model, engineVolume, driver);
+        this.capacity = capacity;
     }
 
-    public Bus(String brand, String model, double engineVolume, DriverD driver) {
-        super(brand, model, engineVolume, driver);
+    public enum Capacity {
+        ESPECIALLY_SMALL(0, 10),
+        SMALL(11, 25),
+        AVERAGE(26, 50),
+        LARGE(51, 80),
+        ESPECIALLY_LARGE(80, 120);
+
+        private final int minCapacity;
+        private final int maxCapacity;
+
+        Capacity(int minCapacity, int maxCapacity) {
+            this.minCapacity = minCapacity;
+            this.maxCapacity = maxCapacity;
+        }
+
+        public int getMinCapacity() {
+            return minCapacity;
+        }
+
+        public int getMaxCapacity() {
+            return maxCapacity;
+        }
+
+        @Override
+        public String toString() {
+            return " * вместимость:  " + minCapacity + " - " + maxCapacity + " мест.";
+        }
     }
 
 
@@ -46,7 +75,7 @@ public class Bus extends Transport<DriverD> implements competing{
 
     @Override
     public String toString() {
-        return "Автобус " + super.toString();
+        return "Автобус " + super.toString() + capacity.toString();
     }
 
     @Override
@@ -58,6 +87,7 @@ public class Bus extends Transport<DriverD> implements competing{
     public void bestLapTime() {
         System.out.printf("Лучшее время круга %s %.1f мин\n", this.getBrand(), (S / speed()) * 60);
     }
+
     @Override
     public void maxSpeed() {
         System.out.printf("Максимальная скорость %s %.1f км/ч\n", this.getBrand(), speed());
@@ -69,7 +99,20 @@ public class Bus extends Transport<DriverD> implements competing{
     }
 
     public void showInfo() {
-        System.out.printf("Водитель %s управляет автобусом %s и будет участвовать в заезде\n", getDriver().getFullName(), getBrand());
+        System.out.printf("Водитель %s управляет автобусом %s и будет участвовать в заезде\n",
+                getDriver().getFullName(), getBrand());
     }
 
+    @Override
+    public void getType() {
+        System.out.printf("Автобус %s вместимостью от %d до %d\n", getBrand(), capacity.minCapacity, capacity.maxCapacity);
+    }
+
+    @Override
+    public void printType() {
+        System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " +
+                ((capacity.minCapacity <= 0 && capacity.maxCapacity <= 0) ?
+                        "Данных по транспортному средству недостаточно" :
+                        capacity.getMinCapacity() + " до " + capacity.getMaxCapacity()));
+    }
 }
