@@ -49,7 +49,6 @@ public class Car extends Transport<DriverB> implements competing {
     }
 
 
-
     @Override
     public String getBrand() {
         return super.getBrand();
