@@ -64,6 +64,7 @@ public class Main {
         isuzu.getType();
 
 
+
     }
 
 

@@ -115,6 +115,8 @@ public class Truck extends Transport<DriverC> implements competing {
                 " до " + loadСapacity.getMaxLoadCapacity());
     }
 
+
+
     @Override
     public void printType() {
         System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " +

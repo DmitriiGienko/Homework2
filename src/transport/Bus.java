@@ -108,6 +108,8 @@ public class Bus extends Transport<DriverD> implements competing {
         System.out.printf("Автобус %s вместимостью от %d до %d\n", getBrand(), capacity.minCapacity, capacity.maxCapacity);
     }
 
+
+
     @Override
     public void printType() {
         System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " +
