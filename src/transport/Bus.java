@@ -108,13 +108,20 @@ public class Bus extends Transport<DriverD> implements competing {
         System.out.printf("Автобус %s вместимостью от %d до %d\n", getBrand(), capacity.minCapacity, capacity.maxCapacity);
     }
 
-
-
     @Override
     public void printType() {
         System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " +
                 ((capacity.minCapacity <= 0 && capacity.maxCapacity <= 0) ?
                         "Данных по транспортному средству недостаточно" :
                         capacity.getMinCapacity() + " до " + capacity.getMaxCapacity()));
+    }
+
+    @Override
+    public void passDiagnostics(){
+        try {
+            throw new TransportTypeException("\"Aвтобусы\" - диагностику проходить не должны!");
+        } catch (TransportTypeException e) {
+            System.err.println(e.getMessage());;
+        }
     }
 }

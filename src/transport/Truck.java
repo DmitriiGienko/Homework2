@@ -124,4 +124,9 @@ public class Truck extends Transport<DriverC> implements competing {
                         "Данных по транспортному средству недостаточно" :
                         loadСapacity.getMinLoadCapacity() + " до " + loadСapacity.getMaxLoadCapacity()));
     }
+
+    @Override
+    public void passDiagnostics() {
+        System.out.printf("Грузовик %S прошел диагностику. Всё ОК!\n", getBrand());
+    }
 }
