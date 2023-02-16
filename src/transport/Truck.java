@@ -116,7 +116,6 @@ public class Truck extends Transport<DriverC> implements competing {
     }
 
 
-
     @Override
     public void printType() {
         System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " +
