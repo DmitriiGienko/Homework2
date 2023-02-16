@@ -117,11 +117,8 @@ public class Bus extends Transport<DriverD> implements competing {
     }
 
     @Override
-    public void passDiagnostics(){
-        try {
-            throw new TransportTypeException("\"Aвтобусы\" - диагностику проходить не должны!");
-        } catch (TransportTypeException e) {
-            System.err.println(e.getMessage());;
-        }
+    public void passDiagnostics() throws TransportTypeException {
+        throw new TransportTypeException("\"Aвтобусы\" - диагностику проходить не должны!");
+
     }
 }

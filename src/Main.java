@@ -3,6 +3,7 @@ import driver.DriverC;
 import driver.DriverD;
 import transport.Bus;
 import transport.Car;
+import transport.TransportTypeException;
 import transport.Truck;
 
 
@@ -66,8 +67,11 @@ public class Main {
         paz.showInfo();
         isuzu.getType();
 
-        neo.passDiagnostics();
-
+        try {
+            neo.passDiagnostics();
+        } catch (TransportTypeException e) {
+            System.err.println(e.getMessage());
+        }
 
 
     }
