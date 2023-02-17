@@ -22,6 +22,7 @@ public abstract class Transport<T> {
         this.engineVolume = engineVolume;
     }
 
+
     public abstract void startMovement();
 
     public abstract void stopMovement();
@@ -49,6 +50,8 @@ public abstract class Transport<T> {
     public abstract void getType();
 
     public abstract void printType();
+
+    public abstract void passDiagnostics() throws TransportTypeException;
 
 
     @Override

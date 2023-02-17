@@ -115,4 +115,10 @@ public class Bus extends Transport<DriverD> implements competing {
                         "Данных по транспортному средству недостаточно" :
                         capacity.getMinCapacity() + " до " + capacity.getMaxCapacity()));
     }
+
+    @Override
+    public void passDiagnostics() throws TransportTypeException {
+        throw new TransportTypeException("\"Aвтобусы\" - диагностику проходить не должны!");
+
+    }
 }

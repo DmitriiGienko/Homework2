@@ -3,6 +3,7 @@ import driver.DriverC;
 import driver.DriverD;
 import transport.Bus;
 import transport.Car;
+import transport.TransportTypeException;
 import transport.Truck;
 
 
@@ -29,6 +30,8 @@ public class Main {
         chevi.showInfo();
         lada.showInfo();
 
+        ferrari.passDiagnostics();
+
         DriverC[] driverC = new DriverC[4];
         driverC[0] = new DriverC("Валенков H.K.", 6, "С");
         driverC[1] = new DriverC("Летунов У.К.", 30, "С");
@@ -45,6 +48,7 @@ public class Main {
         gazel.showInfo();
         reno.showInfo();
         kamaz.showInfo();
+        reno.passDiagnostics();
 
         DriverD[] driverD = new DriverD[4];
         driverD[0] = new DriverD("Валенков H.K.", 6, "D");
@@ -62,6 +66,12 @@ public class Main {
         isuzu.showInfo();
         paz.showInfo();
         isuzu.getType();
+
+        try {
+            neo.passDiagnostics();
+        } catch (TransportTypeException e) {
+            System.err.println(e.getMessage());
+        }
 
 
     }

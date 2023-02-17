@@ -115,11 +115,17 @@ public class Truck extends Transport<DriverC> implements competing {
                 " до " + loadСapacity.getMaxLoadCapacity());
     }
 
+
     @Override
     public void printType() {
         System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " +
                 ((loadСapacity.minLoadCapacity <= 0 && loadСapacity.maxLoadCapacity <= 0) ?
                         "Данных по транспортному средству недостаточно" :
                         loadСapacity.getMinLoadCapacity() + " до " + loadСapacity.getMaxLoadCapacity()));
+    }
+
+    @Override
+    public void passDiagnostics() {
+        System.out.printf("Грузовик %S прошел диагностику. Всё ОК!\n", getBrand());
     }
 }
