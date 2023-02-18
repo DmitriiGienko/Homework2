@@ -18,8 +18,8 @@ public class Main {
 
         Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4, driverB[0], Car.TypeOfBody.COUPE);
         Car ferrari = new Car("FERRARI", "Testarossa", 4.9, driverB[1], Car.TypeOfBody.HATCHBACK);
-        Car chevi = new Car("CHEVROLET", "Comaro", 5.0, driverB[2], Car.TypeOfBody.HATCHBACK);
-        Car lada = new Car("LADA", "2104", 1.3, driverB[3], Car.TypeOfBody.HATCHBACK);
+        Car chevi = new Car("CHEVROLET", "Comaro", 5.0, driverB[2], Car.TypeOfBody.SEDAN);
+        Car lada = new Car("LADA", "2104", 1.3, driverB[3], Car.TypeOfBody.VAN);
         lada.getType();
 
         lada.printType();
