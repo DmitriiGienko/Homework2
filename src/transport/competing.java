@@ -2,11 +2,11 @@ package transport;
 
 public interface competing {
     // дистанция одного круга
-    public final int S = 120;
+    int S = 120;
 
-    public void pitStop();
+    void pitStop();
 
-    public void bestLapTime();
+    void bestLapTime();
 
-    public void maxSpeed();
+    void maxSpeed();
 }
