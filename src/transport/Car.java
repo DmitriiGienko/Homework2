@@ -130,7 +130,7 @@ public class Car extends Transport<DriverB> implements competing {
                 getDriver().getFullName(), getBrand());
     }
 
-    @Override
+   @Override
     public void passDiagnostics() {
         System.out.printf("Автомобиль %S прошел диагностику. Всё ОК!\n", getBrand());
     }

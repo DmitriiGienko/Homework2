@@ -110,7 +110,7 @@ public class Bus extends Transport<DriverD> implements competing {
 
     @Override
     public void printType() {
-        System.out.println("Грузовик " + getBrand() + " грузоподьемностью от  " +
+        System.out.println("Автобус " + getBrand() + " грузоподьемностью от  " +
                 ((capacity.minCapacity <= 0 && capacity.maxCapacity <= 0) ?
                         "Данных по транспортному средству недостаточно" :
                         capacity.getMinCapacity() + " до " + capacity.getMaxCapacity()));
