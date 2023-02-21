@@ -1,7 +1,8 @@
 package transport;
 
 import driver.DriverD;
-
+import technicalSupport.Mechanic;
+import java.util.List;
 import java.util.Random;
 
 public class Bus extends Transport<DriverD> implements competing {
@@ -9,8 +10,9 @@ public class Bus extends Transport<DriverD> implements competing {
     private Capacity capacity;
 
 
-    public Bus(String brand, String model, double engineVolume, DriverD driver, Capacity capacity) {
-        super(brand, model, engineVolume, driver);
+    public Bus(String brand, String model, double engineVolume, DriverD driver,
+               List<Mechanic> mechanicList, Capacity capacity) {
+        super(brand, model, engineVolume, driver, mechanicList);
         this.capacity = capacity;
     }
 
@@ -29,6 +31,7 @@ public class Bus extends Transport<DriverD> implements competing {
             this.maxCapacity = maxCapacity;
         }
 
+
         public int getMinCapacity() {
             return minCapacity;
         }
@@ -43,6 +46,20 @@ public class Bus extends Transport<DriverD> implements competing {
         }
     }
 
+    @Override
+    public List<Mechanic> getMechanicList() {
+        return super.getMechanicList();
+    }
+
+    @Override
+    public void setMechanicList(List<Mechanic> mechanicList) {
+        super.setMechanicList(mechanicList);
+    }
+
+    @Override
+    public void setDriver(DriverD driver) {
+        super.setDriver(driver);
+    }
 
     @Override
     public String getBrand() {
@@ -120,5 +137,19 @@ public class Bus extends Transport<DriverD> implements competing {
     public void passDiagnostics() throws TransportTypeException {
         throw new TransportTypeException("\"Aвтобусы\" - диагностику проходить не должны!");
 
+    }
+
+    @Override
+    public void printDriverAndMechInfo() {
+        System.out.print("Автобусом " + getBrand() + " управляет " + getDriver().getFullName() + " , обслуживают механики: ");
+        int count = getMechanicList().size();
+        for (int i = 0; i < getMechanicList().size(); i++) {
+            System.out.print(getMechanicList().get(i).getFullName() + " ");
+            count--;
+            if (count > 0) {
+                System.out.print("и ");
+            }
+        }
+        System.out.println();
     }
 }
