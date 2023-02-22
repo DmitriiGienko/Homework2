@@ -1,14 +1,31 @@
 import driver.DriverB;
 import driver.DriverC;
 import driver.DriverD;
-import transport.Bus;
-import transport.Car;
-import transport.TransportTypeException;
-import transport.Truck;
-
+import transport.*;
+import technicalSupport.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+
+        // создаю механиков
+        Mechanic genri = new Mechanic("Генри Форд", "Daimler-Benz AG");
+        Mechanic ferdi = new Mechanic("Фердинанд Порше", "Daimler-Benz AG");
+        Mechanic slava = new Mechanic("Вячеслав Молотов", "ГАЗ-сервис");
+        Mechanic soito = new Mechanic("Соитиро Хонда", "Honda Racing Corporation");
+
+        genri.performMaintenance();
+        genri.fixCar();
+        ferdi.performMaintenance();
+        ferdi.fixCar();
+        slava.performMaintenance();
+        slava.fixCar();
+
+        List<Mechanic> mechanics = new ArrayList<>();
+        mechanics.add(genri);//0
+        mechanics.add(ferdi);//1
+        mechanics.add(soito);//2
+        mechanics.add(slava);//3
 
 
         DriverB[] driverB = new DriverB[4];
@@ -17,11 +34,11 @@ public class Main {
         driverB[2] = new DriverB("Сидоров И.Р.", 14, "B");
         driverB[3] = new DriverB("Ильин П.Т.", 2, "B");
 
-        Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4, driverB[0], Car.TypeOfBody.COUPE);
-        Car ferrari = new Car("FERRARI", "Testarossa", 4.9, driverB[1], Car.TypeOfBody.HATCHBACK);
-        Car chevi = new Car("CHEVROLET", "Comaro", 5.0, driverB[2], Car.TypeOfBody.HATCHBACK);
-        Car lada = new Car("LADA", "2104", 1.3, driverB[3], Car.TypeOfBody.HATCHBACK);
-        lada.getType();
+        Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4, driverB[0], mechanics.subList(0, 2), Car.TypeOfBody.COUPE);
+        Car ferrari = new Car("FERRARI", "Testarossa", 4.9, driverB[1], mechanics.subList(1, 3), Car.TypeOfBody.HATCHBACK);
+        Car chevi = new Car("CHEVROLET", "Comaro", 5.0, driverB[2], mechanics.subList(1, 3), Car.TypeOfBody.HATCHBACK);
+        Car lada = new Car("LADA", "2104", 1.3, driverB[3], mechanics.subList(3, 4), Car.TypeOfBody.WAGON);
+
 
         lada.printType();
         System.out.println();
@@ -29,8 +46,10 @@ public class Main {
         ferrari.showInfo();
         chevi.showInfo();
         lada.showInfo();
-
         ferrari.passDiagnostics();
+
+        lambo.printDriverAndMechInfo();
+        chevi.printDriverAndMechInfo();
 
         DriverC[] driverC = new DriverC[4];
         driverC[0] = new DriverC("Валенков H.K.", 6, "С");
@@ -38,10 +57,11 @@ public class Main {
         driverC[2] = new DriverC("Бобров М.Р.", 15, "С");
         driverC[3] = new DriverC("Пчелкин З.Л.", 8, "С");
 
-        Truck man = new Truck("MAN", "TGX", 10.2, driverC[0], Truck.LoadСapacity.N3);
-        Truck gazel = new Truck("Gazel", "Next", 2.4, driverC[0], Truck.LoadСapacity.N1);
-        Truck reno = new Truck("Renault", "Major", 9.8, driverC[0], Truck.LoadСapacity.N2);
-        Truck kamaz = new Truck("KAMAZ", "5320", 10.8, driverC[0], Truck.LoadСapacity.N3);
+        Truck man = new Truck("MAN", "TGX", 10.2, driverC[0], mechanics.subList(0, 2), Truck.LoadСapacity.N3);
+        Truck gazel = new Truck("Gazel", "Next", 2.4, driverC[0], mechanics.subList(2, 4), Truck.LoadСapacity.N1);
+        Truck reno = new Truck("Renault", "Major", 9.8, driverC[0], mechanics.subList(1, 3), Truck.LoadСapacity.N2);
+        Truck kamaz = new Truck("KAMAZ", "5320", 10.8, driverC[0], mechanics.subList(3, 4), Truck.LoadСapacity.N3);
+
         System.out.println(gazel);
         man.getType();
         man.showInfo();
@@ -50,16 +70,21 @@ public class Main {
         kamaz.showInfo();
         reno.passDiagnostics();
 
+        kamaz.printDriverAndMechInfo();
+
         DriverD[] driverD = new DriverD[4];
         driverD[0] = new DriverD("Валенков H.K.", 6, "D");
         driverD[1] = new DriverD("Летунов У.К.", 30, "D");
         driverD[2] = new DriverD("Бобров М.Р.", 15, "D");
         driverD[3] = new DriverD("Пчелкин З.Л.", 8, "D");
 
-        Bus gazell = new Bus("GAZELL", "Transfer", 2.4, driverD[0], Bus.Capacity.ESPECIALLY_SMALL);
-        Bus neo = new Bus("NEOPLAN", "Turboline", 12.4, driverD[1], Bus.Capacity.ESPECIALLY_LARGE);
-        Bus isuzu = new Bus("ISUZU", "Citibus", 5.6, driverD[2], Bus.Capacity.LARGE);
-        Bus paz = new Bus("PAZ", "32054", 4.6, driverD[3], Bus.Capacity.SMALL);
+        Bus gazell = new Bus("GAZELL", "Transfer", 2.4, driverD[0], mechanics.subList(2, 4), Bus.Capacity.ESPECIALLY_SMALL);
+        Bus neo = new Bus("NEOPLAN", "Turboline", 12.4, driverD[1], mechanics.subList(0, 3), Bus.Capacity.ESPECIALLY_LARGE);
+        Bus isuzu = new Bus("ISUZU", "Citibus", 5.6, driverD[2], mechanics.subList(2, 3), Bus.Capacity.LARGE);
+        Bus paz = new Bus("PAZ", "32054", 4.6, driverD[3], mechanics.subList(1, 4), Bus.Capacity.SMALL);
+
+        gazell.printDriverAndMechInfo();
+
         System.out.println(gazell);
         gazell.showInfo();
         neo.showInfo();
@@ -72,6 +97,33 @@ public class Main {
         } catch (TransportTypeException e) {
             System.err.println(e.getMessage());
         }
+
+        // создаю список транспорта участвующих в гонках
+        List<Transport> transportList = new ArrayList<>();
+        transportList.add(lambo);
+        transportList.add(ferrari);
+        transportList.add(chevi);
+        transportList.add(lada);
+        transportList.add(man);
+        transportList.add(gazel);
+        transportList.add(reno);
+        transportList.add(kamaz);
+        transportList.add(gazell);
+        transportList.add(neo);
+        transportList.add(isuzu);
+        transportList.add(paz);
+
+// создаю объект ServiceStation c очередью
+        Queue<Transport> transportQueue = new LinkedList<>();
+        ServiceStation serviceStation = new ServiceStation(transportQueue);
+
+        serviceStation.addToQueue(ferrari);
+        serviceStation.addToQueue(lada);
+        serviceStation.addToQueue(kamaz);
+        serviceStation.addToQueue(neo);
+        serviceStation.performTechnicalInspection();
+        serviceStation.performTechnicalInspection();
+        serviceStation.performTechnicalInspection();
 
 
     }

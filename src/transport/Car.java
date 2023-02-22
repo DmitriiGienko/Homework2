@@ -1,20 +1,20 @@
 package transport;
 
 import driver.DriverB;
-
-import java.sql.SQLOutput;
+import technicalSupport.Mechanic;
+import java.util.List;
 import java.util.Random;
 
-public class Car extends Transport<DriverB> implements competing {
+public class Car extends Transport<DriverB> implements competing{
 
     private TypeOfBody typeOfBody;
 
 
-    public Car(String brand, String model, double engineVolume, DriverB driver, TypeOfBody typeOfBody) {
-        super(brand, model, engineVolume, driver);
+    public Car(String brand, String model, double engineVolume, DriverB driver,
+               List<Mechanic> mechanicList, TypeOfBody typeOfBody) {
+        super(brand, model, engineVolume, driver, mechanicList);
         this.typeOfBody = typeOfBody;
     }
-// добавляю перечисления по типу кузова
 
     public enum TypeOfBody {
         SEDAN("Седан"),
@@ -48,6 +48,15 @@ public class Car extends Transport<DriverB> implements competing {
         }
     }
 
+    @Override
+    public List<Mechanic> getMechanicList() {
+        return super.getMechanicList();
+    }
+
+    @Override
+    public void setMechanicList(List<Mechanic> mechanicList) {
+        super.setMechanicList(mechanicList);
+    }
 
     @Override
     public String getBrand() {
@@ -87,7 +96,7 @@ public class Car extends Transport<DriverB> implements competing {
 
     @Override
     public String toString() {
-        return "Автомобиль " + super.toString() + typeOfBody.toString();
+        return "Автомобиль " + super.toString() + typeOfBody.toString() + "\n";
     }
 
     @Override
@@ -134,6 +143,26 @@ public class Car extends Transport<DriverB> implements competing {
     public void passDiagnostics() {
         System.out.printf("Автомобиль %S прошел диагностику. Всё ОК!\n", getBrand());
     }
+
+    @Override
+    public void printDriverAndMechInfo() {
+        System.out.print("Автомобилем " + getBrand() + " управляет " + getDriver().getFullName() + " , обслуживают механики: ");
+        int count = getMechanicList().size();
+        for (int i = 0; i < getMechanicList().size(); i++) {
+            System.out.print(getMechanicList().get(i).getFullName() + " ");
+            count--;
+            if (count > 0) {
+                System.out.print("и ");
+            }
+        }
+        System.out.println();
+    }
+
+    @Override
+    public boolean isNeedDiagnostic() {
+        return true;
+    }
 }
+
 
 

@@ -1,7 +1,8 @@
 package transport;
 
 import driver.DriverC;
-
+import technicalSupport.Mechanic;
+import java.util.List;
 import java.util.Random;
 
 public class Truck extends Transport<DriverC> implements competing {
@@ -9,8 +10,8 @@ public class Truck extends Transport<DriverC> implements competing {
     private LoadСapacity loadСapacity;
 
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver, LoadСapacity loadСapacity) {
-        super(brand, model, engineVolume, driver);
+    public Truck(String brand, String model, double engineVolume, DriverC driver, List<Mechanic> mechanicList, LoadСapacity loadСapacity) {
+        super(brand, model, engineVolume, driver, mechanicList);
         this.loadСapacity = loadСapacity;
     }
 
@@ -39,10 +40,20 @@ public class Truck extends Transport<DriverC> implements competing {
         public String toString() {
             return " * грузоподъемность от " +
                     minLoadCapacity +
-                    " до " + maxLoadCapacity + " т.";
+                    " до " + maxLoadCapacity + " т." + "\n";
         }
     }
 
+
+    @Override
+    public List<Mechanic> getMechanicList() {
+        return super.getMechanicList();
+    }
+
+    @Override
+    public void setMechanicList(List<Mechanic> mechanicList) {
+        super.setMechanicList(mechanicList);
+    }
 
     @Override
     public String getBrand() {
@@ -128,4 +139,25 @@ public class Truck extends Transport<DriverC> implements competing {
     public void passDiagnostics() {
         System.out.printf("Грузовик %S прошел диагностику. Всё ОК!\n", getBrand());
     }
+
+    @Override
+    public void printDriverAndMechInfo() {
+        System.out.print("Грузовиком " + getBrand() + " управляет " + getDriver().getFullName() + " , обслуживают механики: ");
+        int count = getMechanicList().size();
+        for (int i = 0; i < getMechanicList().size(); i++) {
+            System.out.print(getMechanicList().get(i).getFullName() + " ");
+            count--;
+            if (count > 0) {
+                System.out.print("и ");
+            }
+        }
+        System.out.println();
+    }
+
+    @Override
+    public boolean isNeedDiagnostic() {
+        return true;
+    }
 }
+
+
