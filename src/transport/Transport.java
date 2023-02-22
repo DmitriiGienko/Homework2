@@ -11,7 +11,6 @@ public abstract class Transport<T> {
     private final double engineVolume;
     private T driver;
     private List<Mechanic> mechanicList;
-    private Queue<Transport> transportQueue;
 
 
     public Transport(String brand, String model, double engineVolume, T driver, List<Mechanic> mechanicList) {
