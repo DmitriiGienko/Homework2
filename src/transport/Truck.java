@@ -40,7 +40,7 @@ public class Truck extends Transport<DriverC> implements competing {
         public String toString() {
             return " * грузоподъемность от " +
                     minLoadCapacity +
-                    " до " + maxLoadCapacity + " т.";
+                    " до " + maxLoadCapacity + " т." + "\n";
         }
     }
 
@@ -152,6 +152,11 @@ public class Truck extends Transport<DriverC> implements competing {
             }
         }
         System.out.println();
+    }
+
+    @Override
+    public boolean isNeedDiagnostic() {
+        return true;
     }
 }
 

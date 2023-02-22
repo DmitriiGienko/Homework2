@@ -2,6 +2,7 @@ package transport;
 
 import technicalSupport.Mechanic;
 import java.util.List;
+import java.util.Queue;
 
 public abstract class Transport<T> {
 
@@ -10,6 +11,7 @@ public abstract class Transport<T> {
     private final double engineVolume;
     private T driver;
     private List<Mechanic> mechanicList;
+    private Queue<Transport> transportQueue;
 
 
     public Transport(String brand, String model, double engineVolume, T driver, List<Mechanic> mechanicList) {
@@ -60,6 +62,7 @@ public abstract class Transport<T> {
 
     public abstract void printDriverAndMechInfo();
 
+    public abstract boolean isNeedDiagnostic();
 
     @Override
     public String toString() {

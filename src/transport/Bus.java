@@ -2,6 +2,7 @@ package transport;
 
 import driver.DriverD;
 import technicalSupport.Mechanic;
+
 import java.util.List;
 import java.util.Random;
 
@@ -92,7 +93,7 @@ public class Bus extends Transport<DriverD> implements competing {
 
     @Override
     public String toString() {
-        return "Автобус " + super.toString() + capacity.toString();
+        return "Автобус " + super.toString() + capacity.toString() + "\n";
     }
 
     @Override
@@ -152,4 +153,10 @@ public class Bus extends Transport<DriverD> implements competing {
         }
         System.out.println();
     }
+
+    @Override
+    public boolean isNeedDiagnostic() {
+        return false;
+    }
 }
+

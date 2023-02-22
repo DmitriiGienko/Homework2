@@ -2,11 +2,10 @@ package transport;
 
 import driver.DriverB;
 import technicalSupport.Mechanic;
-import technicalSupport.ServiceStation;
 import java.util.List;
 import java.util.Random;
 
-public class Car extends Transport<DriverB> implements competing, passingDiagnostic {
+public class Car extends Transport<DriverB> implements competing{
 
     private TypeOfBody typeOfBody;
 
@@ -97,7 +96,7 @@ public class Car extends Transport<DriverB> implements competing, passingDiagnos
 
     @Override
     public String toString() {
-        return "Автомобиль " + super.toString() + typeOfBody.toString();
+        return "Автомобиль " + super.toString() + typeOfBody.toString() + "\n";
     }
 
     @Override
@@ -160,13 +159,8 @@ public class Car extends Transport<DriverB> implements competing, passingDiagnos
     }
 
     @Override
-    public void addToDiagnosticQueue() {
-
-    }
-
-    @Override
-    public void passDiagnostic() {
-
+    public boolean isNeedDiagnostic() {
+        return true;
     }
 }
 

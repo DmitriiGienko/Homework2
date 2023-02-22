@@ -3,9 +3,7 @@ import driver.DriverC;
 import driver.DriverD;
 import transport.*;
 import technicalSupport.*;
-
 import java.util.*;
-
 
 public class Main {
     public static void main(String[] args) {
@@ -49,7 +47,9 @@ public class Main {
         chevi.showInfo();
         lada.showInfo();
         ferrari.passDiagnostics();
+
         lambo.printDriverAndMechInfo();
+        chevi.printDriverAndMechInfo();
 
         DriverC[] driverC = new DriverC[4];
         driverC[0] = new DriverC("Валенков H.K.", 6, "С");
@@ -69,6 +69,7 @@ public class Main {
         reno.showInfo();
         kamaz.showInfo();
         reno.passDiagnostics();
+
         kamaz.printDriverAndMechInfo();
 
         DriverD[] driverD = new DriverD[4];
@@ -112,8 +113,17 @@ public class Main {
         transportList.add(isuzu);
         transportList.add(paz);
 
+// создаю объект ServiceStation c очередью
+        Queue<Transport> transportQueue = new LinkedList<>();
+        ServiceStation serviceStation = new ServiceStation(transportQueue);
 
-
+        serviceStation.addToQueue(ferrari);
+        serviceStation.addToQueue(lada);
+        serviceStation.addToQueue(kamaz);
+        serviceStation.addToQueue(neo);
+        serviceStation.performTechnicalInspection();
+        serviceStation.performTechnicalInspection();
+        serviceStation.performTechnicalInspection();
 
 
     }
