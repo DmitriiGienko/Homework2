@@ -2,7 +2,6 @@ package transport;
 
 import technicalSupport.Mechanic;
 import java.util.List;
-import java.util.Queue;
 
 public abstract class Transport<T> {
 
