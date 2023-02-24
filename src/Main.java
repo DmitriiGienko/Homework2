@@ -1,9 +1,9 @@
+import driver.Driver;
 import driver.DriverB;
 import driver.DriverC;
 import driver.DriverD;
 import transport.*;
 import technicalSupport.*;
-
 import java.util.*;
 
 public class Main {
@@ -125,6 +125,19 @@ public class Main {
         serviceStation.performTechnicalInspection();
         serviceStation.performTechnicalInspection();
         serviceStation.performTechnicalInspection();
+
+        Set<Driver> driverSet = new HashSet<>();
+        driverSet.add(driverB[0]);
+        driverSet.add(driverB[0]);
+        driverSet.add(driverB[1]);
+        driverSet.add(driverB[0]);
+        driverSet.add(driverC[3]);
+        driverSet.add(driverD[2]);
+        driverSet.add(driverB[2]);
+        for (Driver driver : driverSet) {
+            System.out.println(driver.getFullName());
+        }
+
 
 
     }
