@@ -3,13 +3,14 @@ import driver.DriverC;
 import driver.DriverD;
 import transport.*;
 import technicalSupport.*;
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
         // создаю механиков
-        Mechanic genri = new Mechanic("Генри Форд", "Daimler-Benz AG");
+        Mechanic genri = new Mechanic("Генри Форд", "Ford Motor Company");
         Mechanic ferdi = new Mechanic("Фердинанд Порше", "Daimler-Benz AG");
         Mechanic slava = new Mechanic("Вячеслав Молотов", "ГАЗ-сервис");
         Mechanic soito = new Mechanic("Соитиро Хонда", "Honda Racing Corporation");
@@ -22,10 +23,10 @@ public class Main {
         slava.fixCar();
 
         List<Mechanic> mechanics = new ArrayList<>();
-        mechanics.add(genri);//0
-        mechanics.add(ferdi);//1
-        mechanics.add(soito);//2
-        mechanics.add(slava);//3
+        mechanics.add(genri);
+        mechanics.add(ferdi);
+        mechanics.add(soito);
+        mechanics.add(slava);
 
 
         DriverB[] driverB = new DriverB[4];
