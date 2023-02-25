@@ -1,25 +1,25 @@
 package driver;
 
 
-public class DriverB extends Driver{
+public class DriverB extends Driver {
 
-    public DriverB(String fullName,int experience, String typeOfDriverLicence) {
-        super(fullName,experience,typeOfDriverLicence);
+    public DriverB(String fullName, int experience, String typeOfDriverLicence) {
+        super(fullName, experience, typeOfDriverLicence);
     }
 
     @Override
     public void startMoving() {
-        System.out.printf("Водитель %s начал движение\n",super.getFullName());
+        System.out.printf("Водитель %s начал движение\n", super.getFullName());
     }
 
     @Override
     public void stopMoving() {
-        System.out.printf("Водитель %s остановился\n",super.getFullName());
+        System.out.printf("Водитель %s остановился\n", super.getFullName());
     }
 
     @Override
     public void refuelCar() {
-        System.out.printf("Водитель %s заправляет автомобиль\n",super.getFullName());
+        System.out.printf("Водитель %s заправляет автомобиль\n", super.getFullName());
     }
 
 
@@ -34,9 +34,20 @@ public class DriverB extends Driver{
     }
 
     @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
     public String getTypeOfDriverLicense() {
         return super.getTypeOfDriverLicense();
     }
+
     @Override
     public String toString() {
         return super.toString();
