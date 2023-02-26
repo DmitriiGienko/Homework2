@@ -23,7 +23,7 @@ public class Main {
         slava.performMaintenance();
         slava.fixCar();
 
-        List<Mechanic> mechanics = new ArrayList<>();
+        List<Mechanic> mechanics = new LinkedList<>();
         mechanics.add(genri);
         mechanics.add(ferdi);
         mechanics.add(soito);
@@ -36,7 +36,7 @@ public class Main {
         driverB[2] = new DriverB("Сидоров И.Р.", 14, "B");
         driverB[3] = new DriverB("Ильин П.Т.", 2, "B");
 
-        Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4, driverB[0], mechanics.subList(0, 2), Car.TypeOfBody.COUPE);
+        Car lambo = new Car("LAMBORGHINI", "Countach s", 6.4, driverB[0], mechanics.subList(3, 4), Car.TypeOfBody.COUPE);
         Car ferrari = new Car("FERRARI", "Testarossa", 4.9, driverB[1], mechanics.subList(1, 3), Car.TypeOfBody.HATCHBACK);
         Car chevi = new Car("CHEVROLET", "Comaro", 5.0, driverB[2], mechanics.subList(1, 3), Car.TypeOfBody.HATCHBACK);
         Car lada = new Car("LADA", "2104", 1.3, driverB[3], mechanics.subList(3, 4), Car.TypeOfBody.WAGON);
@@ -81,9 +81,9 @@ public class Main {
         driverD[3] = new DriverD("Пчелкин З.Л.", 8, "D");
 
         Bus gazell = new Bus("GAZELL", "Transfer", 2.4, driverD[0], mechanics.subList(2, 4), Bus.Capacity.ESPECIALLY_SMALL);
-        Bus neo = new Bus("NEOPLAN", "Turboline", 12.4, driverD[1], mechanics.subList(0, 3), Bus.Capacity.ESPECIALLY_LARGE);
+        Bus neo = new Bus("NEOPLAN", "Turboline", 12.4, driverD[1], mechanics.subList(1, 2), Bus.Capacity.ESPECIALLY_LARGE);
         Bus isuzu = new Bus("ISUZU", "Citibus", 5.6, driverD[2], mechanics.subList(2, 3), Bus.Capacity.LARGE);
-        Bus paz = new Bus("PAZ", "32054", 4.6, driverD[3], mechanics.subList(1, 4), Bus.Capacity.SMALL);
+        Bus paz = new Bus("PAZ", "32054", 4.6, driverD[3], mechanics.subList(2, 4), Bus.Capacity.SMALL);
 
         gazell.printDriverAndMechInfo();
 
@@ -97,7 +97,7 @@ public class Main {
         try {
             neo.passDiagnostics();
         } catch (TransportTypeException e) {
-            System.err.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
 
         // создаю список транспорта участвующих в гонках
@@ -137,6 +137,27 @@ public class Main {
         driverSet.add(driverB[2]);
         for (Driver driver : driverSet) {
             System.out.println(driver.getFullName());
+        }
+
+        Map<Transport<?>, List<Mechanic>> mechanicMap = new HashMap<>();
+        mechanicMap.put(lambo, lambo.getMechanicList());
+        mechanicMap.put(chevi, chevi.getMechanicList());
+        mechanicMap.put(ferrari, ferrari.getMechanicList());
+        mechanicMap.put(lada, lada.getMechanicList());
+        mechanicMap.put(kamaz, kamaz.getMechanicList());
+        mechanicMap.put(man, man.getMechanicList());
+        mechanicMap.put(neo, neo.getMechanicList());
+        mechanicMap.put(gazell, gazell.getMechanicList());
+        mechanicMap.put(paz, paz.getMechanicList());
+        for (Map.Entry<Transport<?>, List<Mechanic>> entry : mechanicMap.entrySet()) {
+            System.out.printf("%S обслуживает  : ", entry.getKey().getBrand());
+            for (int i = 0; i < entry.getKey().getMechanicList().size(); i++) {
+                System.out.print(entry.getKey().getMechanicList().get(i).getFullName());
+                if (i < entry.getKey().getMechanicList().size() - 1) {
+                    System.out.print(" и ");
+                }
+            }
+            System.out.println();
         }
 
 

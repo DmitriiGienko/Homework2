@@ -37,4 +37,5 @@ public class Mechanic {
     public String toString() {
         return "Механик: " + fullName + ". Компания: " + nameOfCompany;
     }
+
 }

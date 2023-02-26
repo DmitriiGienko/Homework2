@@ -1,6 +1,7 @@
 package technicalSupport;
 
 import transport.Transport;
+
 import java.util.Queue;
 
 public class ServiceStation {
@@ -24,7 +25,7 @@ public class ServiceStation {
             queue.offer(transport);
             System.out.println(transport.getBrand() + " в очереди на техобслуживание");
         } else {
-            System.out.println("Диагностики не подлежит!");
+            System.out.println("Диагностике не подлежит!");
         }
     }
 
