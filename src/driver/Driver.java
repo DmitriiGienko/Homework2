@@ -41,7 +41,7 @@ public abstract class Driver {
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName, experience);
+        return Objects.hash(fullName, experience, typeOfDriverLicense);
     }
 
     @Override

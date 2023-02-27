@@ -75,10 +75,10 @@ public class Main {
         kamaz.printDriverAndMechInfo();
 
         DriverD[] driverD = new DriverD[4];
-        driverD[0] = new DriverD("Валенков H.K.", 6, "D");
-        driverD[1] = new DriverD("Летунов У.К.", 30, "D");
-        driverD[2] = new DriverD("Бобров М.Р.", 15, "D");
-        driverD[3] = new DriverD("Пчелкин З.Л.", 8, "D");
+        driverD[0] = new DriverD("Хохлов Р.С.", 6, "D");
+        driverD[1] = new DriverD("Анисимов К.С.", 30, "D");
+        driverD[2] = new DriverD("Жлобченкович Г.И.", 15, "D");
+        driverD[3] = new DriverD("Филимонов П.А.", 8, "D");
 
         Bus gazell = new Bus("GAZELL", "Transfer", 2.4, driverD[0], mechanics.subList(2, 4), Bus.Capacity.ESPECIALLY_SMALL);
         Bus neo = new Bus("NEOPLAN", "Turboline", 12.4, driverD[1], mechanics.subList(1, 2), Bus.Capacity.ESPECIALLY_LARGE);
@@ -127,6 +127,7 @@ public class Main {
         serviceStation.performTechnicalInspection();
         serviceStation.performTechnicalInspection();
 
+// Задача по SET из старого урока (не стал удалять)
         Set<Driver> driverSet = new HashSet<>();
         driverSet.add(driverB[0]);
         driverSet.add(driverB[0]);
@@ -139,6 +140,8 @@ public class Main {
             System.out.println(driver.getFullName());
         }
 
+// Это новая задача из измененного урока по MAP
+        System.out.println("______Задача урок 8______");
         Map<Transport<?>, List<Mechanic>> mechanicMap = new HashMap<>();
         mechanicMap.put(lambo, lambo.getMechanicList());
         mechanicMap.put(chevi, chevi.getMechanicList());
@@ -158,6 +161,27 @@ public class Main {
                 }
             }
             System.out.println();
+        }
+
+// Новая адача по уроку SET
+        System.out.println("______Задача урок 9______");
+        Set<Driver> drivers = new HashSet<>();
+        drivers.add(driverB[0]);
+        drivers.add(driverB[1]);
+        drivers.add(driverB[0]);
+        drivers.add(driverB[1]);
+        drivers.add(driverB[0]);
+        drivers.add(driverC[3]);
+        drivers.add(driverD[2]);
+        drivers.add(driverC[3]);
+        drivers.add(driverC[0]);
+        drivers.add(driverC[1]);
+        drivers.add(driverD[1]);
+        drivers.add(driverD[2]);
+
+        Iterator<Driver> iterDrivers = drivers.iterator();
+        while (iterDrivers.hasNext()) {
+            System.out.println(iterDrivers.next().getFullName());
         }
 
 
