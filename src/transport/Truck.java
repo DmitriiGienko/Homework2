@@ -2,6 +2,7 @@ package transport;
 
 import driver.DriverC;
 import technicalSupport.Mechanic;
+
 import java.util.List;
 import java.util.Random;
 
@@ -157,6 +158,16 @@ public class Truck extends Transport<DriverC> implements competing {
     @Override
     public boolean isNeedDiagnostic() {
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + loadСapacity.hashCode();
     }
 }
 

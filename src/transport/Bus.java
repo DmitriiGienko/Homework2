@@ -2,6 +2,7 @@ package transport;
 
 import driver.DriverD;
 import technicalSupport.Mechanic;
+
 import java.util.List;
 import java.util.Random;
 
@@ -156,6 +157,16 @@ public class Bus extends Transport<DriverD> implements competing {
     @Override
     public boolean isNeedDiagnostic() {
         return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + capacity.hashCode();
     }
 }
 
